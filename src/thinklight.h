@@ -34,7 +34,6 @@
 #define LIGHT_ON  '\x8a'
 #define LIGHT_OFF '\x0a'
 
-
 // This function opens the API file and returns the proper file descriptor
 // or -1 on failure.
 int thinklight_open(void);
@@ -49,5 +48,7 @@ int thinklight_on(int fd);
 // This function morses the given string out by the LED using pause
 // as argument to usleep()
 int thinklight_morse(int fd, char *buffer, unsigned int pause);
+
+int thinklight_blink(int fd, unsigned int pause);
 
 #endif
