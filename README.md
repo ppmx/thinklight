@@ -4,7 +4,7 @@ This library enables interaction with the red light on the backside of
 ThinkPad notebooks. It provides methods to turn the light on and off and a
 function to tap out a morse code message.
 
-![](https://miks.space/dump/thinklight.gif)
+![thinklight.gif](thinklight.gif)
 
 
 ## code example
