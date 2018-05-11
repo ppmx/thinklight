@@ -42,13 +42,12 @@ int thinklight_open(void);
 // return value of close()
 int thinklight_close(int fd);
 
+int thinklight_blink(int fd, unsigned int pause);
 int thinklight_off(int fd);
 int thinklight_on(int fd);
 
 // This function morses the given string out by the LED using pause
 // as argument to usleep()
 int thinklight_morse(int fd, char *buffer, unsigned int pause);
-
-int thinklight_blink(int fd, unsigned int pause);
 
 #endif

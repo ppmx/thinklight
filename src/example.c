@@ -1,29 +1,24 @@
-/**
- * This program uses the red light on the backside of Lenovo ThinkPad
- * notebooks to morse a "hello world" and let the light blinking afterwards.
- *
- * You have to enable write operations to the API by setting 'write_support'
- * of the kernel module. Have a look at thinklight.h.
- */
-
 #include <stdio.h>
+#include <stdlib.h>
 #include "thinklight.h"
 #include <unistd.h>
 
-int main(void)
+int main(int argc, char **argv)
 {
 	int fd;
+	unsigned int pause = 500000;
+
+	if (argc != 2 && argc != 3)
+		return printf("Usage: %s <string> [pause]\n", argv[0]);
+
+	if (argc == 3)
+		pause = (unsigned int) atoi(argv[2]);
 
 	if ((fd = thinklight_open()) == -1)
 		return -1;
 
-	if (thinklight_morse(fd, "hello world", 500000) == -1)
+	if (thinklight_morse(fd, argv[1], pause) == -1)
 		return thinklight_close(fd);
-
-	for (size_t i = 0; i < 23; i++) {
-		if (thinklight_blink(fd, 200000) == -1)
-			break;
-	}
 
 	return thinklight_close(fd);
 }
